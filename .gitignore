@@ -9,3 +9,4 @@ venv/
 # Local environment variables and secrets
 .env
 .env.*
+deployment/

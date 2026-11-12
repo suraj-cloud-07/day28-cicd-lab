@@ -1,4 +1,4 @@
-name: Student Result CI
+name: Student Result CI-CD
 
 on:
   push:
@@ -22,3 +22,20 @@ jobs:
 
       - name: Run automated tests
         run: python -m unittest -v
+
+  deploy:
+    name: Simulate Deployment
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run deployment simulation
+        run: bash deploy.sh
